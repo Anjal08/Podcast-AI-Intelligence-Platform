@@ -11,9 +11,18 @@ transformers
 sentence-transformers
 textblob
 nltk
+scikit-learn
 
-# Data & Utilities`
+# Audio & YouTube
+yt-dlp
+ffmpeg-python
+librosa
+pydub
+
+# Data & Utilities
 numpy
 pandas
 requests
 fpdf
+python-dotenv
+scipy
