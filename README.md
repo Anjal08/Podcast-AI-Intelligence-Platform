@@ -33,4 +33,6 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ## 4.Run the Frontend:
 streamlit run app.py
+
+## Author
 Built by Anjali Patel as part of the AI Internship.
