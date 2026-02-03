@@ -1,0 +1,19 @@
+# Web Frameworks
+streamlit
+fastapi
+uvicorn
+python-multipart
+
+# AI & NLP
+openai-whisper
+torch
+transformers
+sentence-transformers
+textblob
+nltk
+
+# Data & Utilities`
+numpy
+pandas
+requests
+fpdf
