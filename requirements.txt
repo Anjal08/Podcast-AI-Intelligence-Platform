@@ -26,3 +26,4 @@ requests
 fpdf
 python-dotenv
 scipy
+keybert
