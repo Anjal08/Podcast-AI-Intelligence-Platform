@@ -15,5 +15,5 @@ keybert
 transformers
 torch
 fpdf
-yt-dlp
 soundfile
+yt-dlp
