@@ -205,7 +205,8 @@ with st.sidebar:
                     thinking_placeholder = st.empty()
                     thinking_placeholder.markdown(".....")
                     
-                    res = requests.post("http://localhost:8000/chat", 
+                    BACKEND_URL = os.environ.get("BACKEND_URL", "http://localhost:8000")
+                    res = requests.post(f"{BACKEND_URL}/chat", 
                                       json={"task_id": st.session_state.task_id, "query": prompt})
                     
                     if res.status_code != 200:
@@ -309,8 +310,9 @@ if st.session_state.audio_path:
         # 1. SEND THE FILE TO THE ENGINE
         with st.spinner("Uploading audio to AI Engine..."):
             try:
+                BACKEND_URL = os.environ.get("BACKEND_URL", "http://localhost:8000")
                 with open(st.session_state.audio_path, "rb") as f:
-                    response = requests.post("http://localhost:8000/analyze", files={"file": f})
+                    response = requests.post(f"{BACKEND_URL}/analyze", files={"file": f})
                     st.session_state.task_id = response.json()["task_id"]
                     task_id = st.session_state.task_id
             except Exception as e:
@@ -323,7 +325,8 @@ if st.session_state.audio_path:
         
         while True:
             try:
-                check = requests.get(f"http://localhost:8000/status/{task_id}").json()
+                BACKEND_URL = os.environ.get("BACKEND_URL", "http://localhost:8000")
+                check = requests.get(f"{BACKEND_URL}/status/{task_id}").json()
                 status = check.get("status")
                 
                 if status == "completed":
