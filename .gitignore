@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.env
+
+# Large Models & AI Cache
+*.h5
+*.tflite
+*.onnx
+core/__pycache__/
+.cache/
+
+# Project Specific
+temp_uploads/
+uploads/
+outputs/
+data/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/

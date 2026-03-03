@@ -1,0 +1,13 @@
+Audio
+  ↓
+Audio Preprocessing
+  ↓
+Whisper Transcription (timestamps)
+  ↓
+Sentence Embeddings
+  ↓
+Topic Segmentation (cosine similarity)
+  ↓
+Topic Labeling (KeyBERT)
+  ↓
+Topic Summaries (Transformer)

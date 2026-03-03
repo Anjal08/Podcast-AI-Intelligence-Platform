@@ -1,0 +1,10 @@
+This "Elevator Pitch" is designed to highlight your technical skills while showing the real-world value of what you’ve built. It’s perfect for a job interview or a project presentation.
+
+🎙️ The 30-Second Elevator Pitch
+"I developed a Podcast Intelligence Platform that solves the problem of navigating and summarizing long-form audio content.
+
+By building a full-stack system with a FastAPI backend and a Streamlit frontend, I integrated OpenAI's Whisper for high-fidelity 
+transcription and used BERT embeddings to automatically segment audio into labeled chapters with AI-generated summaries.
+
+I also implemented a Sentiment Analysis layer to track the emotional tone of each segment and built an export engine for JSON and
+ PDF reporting. The result is a tool that can transform a 1-hour podcast into a structured, searchable, and fully summarized document in just minutes."

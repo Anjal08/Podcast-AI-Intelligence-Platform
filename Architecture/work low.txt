@@ -1,0 +1,14 @@
+Audio 🎧
+  ↓
+Clean Audio 🧹
+  ↓
+Whisper 🧠
+  ↓
+Timed Sentences ⏱
+
+audio → preprocess → whisper → transcript (in memory)
+  
+venv\Scripts\activate   virtual environment
+
+uvicorn main:app --reload   backend
+Sreamlit run app.py  frontend 

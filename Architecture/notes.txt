@@ -1,0 +1,135 @@
+🔹 Project Title
+
+Automated Podcast Transcription and Topic Segmentation
+
+🔹 Step 1: Audio Preprocessing
+
+What I did:
+
+Converted raw audio into a clean, machine-friendly format
+
+Converted audio to mono
+
+Resampled to 16kHz
+
+Removed silence and normalized loudness
+
+Why it is needed:
+
+Speech recognition models like Whisper perform best on clean, standardized audio.
+
+One-line explanation (Interview):
+
+I preprocess raw podcast audio to improve transcription accuracy by standardizing sample rate and removing noise.
+
+🔹 Step 2: Transcription (Whisper ASR) ✅
+
+What I did:
+
+Used OpenAI Whisper (small model, CPU-friendly)
+
+Converted speech to text
+
+Extracted timestamps for each sentence
+
+Output format:
+
+[start_time – end_time] sentence
+
+Why timestamps matter:
+
+Enables topic boundaries
+
+Enables clickable transcript
+
+Useful for UI & analytics
+
+One-line explanation (Interview):
+
+I used Whisper ASR to generate timestamped transcripts from podcast audio.
+
+🔹 Step 3: Sentence Embeddings
+
+What I did:
+
+Converted each transcribed sentence into a vector
+
+Used paraphrase-MiniLM-L3-v2 (lightweight, fast)
+
+Why embeddings are needed:
+
+Machines cannot compare text directly; embeddings allow semantic comparison.
+
+One-line explanation:
+
+Each sentence is encoded into semantic embeddings to capture meaning.
+
+🔹 Step 4: Topic Segmentation ✅
+
+Your line is PERFECT, just slightly refined 👇
+
+Your version:
+
+If the meaning between two consecutive sentences changes a lot, a new topic starts.
+
+Final polished version:
+
+If the semantic similarity between two consecutive sentences drops below a threshold, a new topic boundary is detected.
+
+How meaning is measured:
+
+Sentence embeddings
+
+Cosine similarity
+
+One-line explanation (Interview):
+
+Topic segmentation is performed by measuring cosine similarity between consecutive sentence embeddings.
+
+🔹 Step 5: Topic Labeling (KeyBERT) ✅
+
+Your version (already good):
+
+implemented semantic topic labeling using KeyBERT to generate interpretable topic names from segmented audio transcripts without relying on large language model APIs.
+
+Polished + confident version:
+
+I implemented semantic topic labeling using KeyBERT to generate interpretable topic names from segmented podcast transcripts without relying on large language model APIs.
+
+Why KeyBERT:
+
+Semantic (meaning-based)
+
+CPU-friendly
+
+No paid APIs
+
+Industry-used
+
+
+
+For topis SummariesMiniLM embeddings loading ✅
+
+KeyBERT loading ✅
+
+DistilBART summarizer loading ✅
+
+Those long UNEXPECTED / LOAD REPORT messages ✅
+
+👉 These are model weight warnings, not errors.
+You can safely ignore them forever.
+
+So the AI pipeline is correct now.
+After initial sentence-level segmentation, I applied topic chunking to merge micro-topics into stable, human-interpretable segments using duration and sentence-count constraints.
+
+Topic Labeling : 
+
+“Topic labels are generated using KeyBERT, which extracts the most representative keywords from each segment. 
+These labels are lightweight, interpretable, and avoid LLM dependency.”
+
+“Topic labels are generated using KeyBERT keywords, enhanced with domain-aware semantic rules to produce interpretable, 
+human-readable titles without relying on LLM APIs.”
+
+uvicorn main:app --reload   backend
+Sreamlit run app.py  frontend 
+
