@@ -17,6 +17,3 @@ torch
 fpdf
 yt-dlp
 soundfile
-uuid
-shutil
-datetime
