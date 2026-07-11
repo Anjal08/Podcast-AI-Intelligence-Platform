@@ -2,6 +2,7 @@ from fastapi import FastAPI, UploadFile, File, BackgroundTasks, Body
 from pydantic import BaseModel
 import uuid
 import os
+from dotenv import load_dotenv
 import shutil
 from textblob import TextBlob
 from groq import Groq
@@ -9,6 +10,7 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 import json
 
+load_dotenv()
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
 # --- IMPORTING YOUR HARD WORK FROM THE CORE FOLDER ---
