@@ -71,14 +71,14 @@ export function TranscriptPage() {
       <div className="sticky top-0 z-20 bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-border)] pb-6 pt-4 -mx-8 px-8">
         <div className="flex flex-col sm:flex-row gap-6 justify-between items-center">
           {/* Custom Search bar design */}
-          <div className="relative w-full sm:w-96">
-            <Search className="absolute left-[16px] top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--color-muted)] pointer-events-none" />
+          <div className="relative w-full sm:w-96 flex items-center">
+            <Search className="absolute left-4 w-5 h-5 text-[var(--color-muted)] pointer-events-none" />
             <input
               type="text"
               placeholder="Search transcript..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="w-full h-12 pl-[48px] pr-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl text-[16px] text-[var(--color-text)] placeholder:text-[var(--color-muted)] focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-all placeholder:align-middle"
+              className="w-full h-12 pl-12 pr-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl text-base text-[var(--color-text)] placeholder:text-[var(--color-muted)] focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-all"
             />
           </div>
           
@@ -100,29 +100,29 @@ export function TranscriptPage() {
         {filtered.map((sentence, idx) => (
           <div 
             key={idx} 
-            className="card p-6 group hover:border-[var(--color-primary)] hover:bg-[var(--color-surface-hover)] transition-all duration-200 relative flex flex-col md:flex-row gap-4"
+            className="card p-8 group hover:border-[var(--color-primary)]/40 hover:bg-[var(--color-surface-hover)] transition-all duration-300 relative flex flex-col md:flex-row gap-6 hover:shadow-lg"
           >
             {/* Left Column: Speaker and Avatar */}
-            <div className="flex md:flex-col items-center md:items-center gap-3 md:gap-2 shrink-0 md:w-24">
-              <div className="w-10 h-10 rounded-full bg-[var(--color-sidebar)] border border-[var(--color-border)] text-[var(--color-primary)] flex items-center justify-center text-[13px] font-bold shadow-sm">
-                SP
+            <div className="flex flex-row md:flex-col items-center md:items-start gap-3 shrink-0 md:w-32 pt-1">
+              <div className="px-3 py-1.5 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] flex items-center gap-1.5 text-[13px] font-bold shadow-sm border border-[var(--color-primary)]/20">
+                <span className="text-base leading-none">🎙</span>
+                <span>Speaker 1</span>
               </div>
-              <span className="text-[13px] font-semibold text-[var(--color-text-secondary)]">Speaker 1</span>
             </div>
 
             {/* Right Column: Sentence and Action Buttons */}
             <div className="flex-1 min-w-0 space-y-3">
               <div className="flex items-center justify-between gap-4">
                 {/* Timestamp Badge */}
-                <span className="px-2.5 py-1 rounded bg-[var(--color-bg)] border border-[var(--color-border)] text-[13px] font-semibold font-mono text-[var(--color-muted)]">
+                <span className="px-3 py-1 rounded-md bg-[var(--color-bg)] border border-[var(--color-border)] text-[12px] font-semibold font-mono text-[var(--color-text-secondary)] shadow-sm">
                   {formatDuration(sentence.start)}
                 </span>
                 
                 {/* Actions */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                   <button 
                     onClick={() => handleCopyText(sentence.text, idx)}
-                    className="p-2 rounded-lg text-[var(--color-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg)] transition-colors"
+                    className="p-2 rounded-lg text-[var(--color-muted)] hover:text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10 transition-colors group/btn relative"
                     title="Copy text"
                   >
                     {copiedIndex === idx ? <CheckCircle2 className="w-4 h-4 text-[var(--color-success)]" /> : <Copy className="w-4 h-4" />}
@@ -130,7 +130,7 @@ export function TranscriptPage() {
                   
                   <button 
                     onClick={() => seek(sentence.start)}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--color-bg)] border border-[var(--color-border)] text-[13px] font-semibold font-mono text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white hover:border-transparent transition-all"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--color-bg)] border border-[var(--color-border)] text-[13px] font-semibold font-mono text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white hover:border-transparent transition-all shadow-sm"
                   >
                     <PlayCircle className="w-4 h-4" />
                     Seek
@@ -138,7 +138,7 @@ export function TranscriptPage() {
                 </div>
               </div>
               
-              <p className="text-[16px] leading-[1.8] text-[var(--color-text-secondary)]">
+              <p className="text-base leading-[2] text-[var(--color-text)]">
                 {renderText(sentence.text)}
               </p>
             </div>

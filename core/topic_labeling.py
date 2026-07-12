@@ -9,7 +9,7 @@ def get_kw_model():
     global _kw_model, _embedding_model
 
     if _kw_model is None:
-        print("🔹 Loading keyword model (only once)...")
+        print("Loading keyword model (only once)...")
         _embedding_model = SentenceTransformer(
             "paraphrase-MiniLM-L3-v2",
             device="cpu"

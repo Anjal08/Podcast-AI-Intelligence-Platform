@@ -1,6 +1,6 @@
 from transformers import pipeline
 
-# Use text-generation pipeline (compatible with new HF versions)
+# Use text-generation pipeline
 summarizer = pipeline(
     "text-generation",
     model="sshleifer/distilbart-cnn-12-6",

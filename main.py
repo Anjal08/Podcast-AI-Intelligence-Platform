@@ -19,7 +19,17 @@ from core.transcription import transcribe
 from core.embeddings import get_embeddings
 from core.topic_segmentation import segment_topics_with_labels
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Memory to store task results
 from typing import Dict, Any
@@ -31,7 +41,7 @@ def process_podcast_task(task_id: str, file_path: str):
     """
     try:
         # Step 1: Preprocessing
-        tasks[task_id] = {"status": " Attempting Preprocessing", "progress": 10}
+        tasks[task_id] = {"status": "Attempting Preprocessing", "progress": 10}
         processed_path = preprocess_audio(file_path)
         
         # Step 2: Transcription

@@ -2,18 +2,18 @@
 
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
-  --font-heading: 'Poppins', system-ui, sans-serif;
+  --font-heading: 'Inter', system-ui, sans-serif;
 
   /* Premium Dark Slate Palette */
   --color-bg: #0F172A;
   --color-sidebar: #111827;
   --color-surface: #1E293B;
   --color-surface-hover: #273449;
-  --color-border: #334155;
+  --color-border: rgba(255, 255, 255, 0.08);
   
   --color-primary: #8B5CF6;
   --color-primary-hover: #7C3AED;
-  --color-accent: #3B82F6;
+  --color-accent: #8B5CF6; /* Ensuring no stray cyan/amber */
   --color-success: #22C55E;
   --color-warning: #F59E0B;
   --color-danger: #EF4444;
@@ -32,7 +32,7 @@
   --color-sidebar: #111827;
   --color-surface: #1E293B;
   --color-surface-hover: #273449;
-  --color-border: #334155;
+  --color-border: rgba(255, 255, 255, 0.08);
   
   --color-text: #F8FAFC;
   --color-text-secondary: #CBD5E1;
@@ -49,7 +49,7 @@
   --color-sidebar: #111827;
   --color-surface: #1E293B;
   --color-surface-hover: #273449;
-  --color-border: #334155;
+  --color-border: rgba(255, 255, 255, 0.08);
   
   --color-text: #F8FAFC;
   --color-text-secondary: #CBD5E1;
@@ -83,6 +83,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+  line-height: 1.2;
 }
 
 /* Scrollbar */
@@ -97,18 +98,38 @@ h1, h2, h3, h4, h5, h6 {
 /* Focus */
 :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 
+/* Input */
+input, textarea, select {
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding: 0 16px;
+  transition: all 200ms ease;
+}
+input::placeholder, textarea::placeholder {
+  color: var(--color-muted);
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
 /* Card base */
 .card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 12px;
+  border-radius: 16px;
+  padding: 24px;
   box-shadow: var(--shadow-sm);
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover {
   background: var(--color-surface-hover);
-  border-color: var(--color-muted);
+  border-color: rgba(255, 255, 255, 0.12);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -118,7 +139,7 @@ button {
   font-family: var(--font-sans);
 }
 
-/* Primary Button with Purple Gradient, Height 44px, Radius 12px, Soft Shadow, Hover Lift */
+/* Primary Button */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -126,21 +147,21 @@ button {
   gap: 12px;
   height: 44px;
   padding: 0 24px;
-  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+  background: var(--color-primary);
   color: #FFFFFF;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
   border-radius: 12px;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary:hover:not(:disabled) {
+  background: var(--color-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
-  filter: brightness(1.1);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
 }
 
 .btn-primary:active:not(:disabled) {
@@ -153,15 +174,15 @@ button {
   box-shadow: none;
 }
 
-/* Secondary Button with Dark Card, Border, Subtle Hover, Icon spacing 12px */
+/* Secondary Button */
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
   height: 44px;
-  padding: 0 20px;
-  background: var(--color-surface);
+  padding: 0 24px;
+  background: transparent;
   color: var(--color-text-secondary);
   font-weight: 500;
   font-size: 14px;
@@ -169,12 +190,11 @@ button {
   border: 1px solid var(--color-border);
   cursor: pointer;
   transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: var(--color-surface-hover);
-  border-color: var(--color-muted);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
   color: var(--color-text);
   transform: translateY(-1px);
 }

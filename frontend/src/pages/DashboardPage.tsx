@@ -54,11 +54,11 @@ export function DashboardPage() {
           onDrop={onDrop}
           onClick={() => inputRef.current?.click()}
           className={`
-            relative flex flex-col items-center justify-center gap-6 p-12 md:p-16 border-2 border-dashed cursor-pointer rounded-2xl
-            transition-all duration-200 shadow-sm
+            relative flex flex-col items-center justify-center gap-6 p-20 border-2 border-dashed cursor-pointer rounded-[24px]
+            transition-all duration-300 shadow-sm
             ${isDragging
               ? 'border-[var(--color-primary)] bg-[rgba(139,92,246,0.08)] shadow-lg'
-              : 'border-[var(--color-border)] bg-[var(--color-surface)] hover:border-[var(--color-muted)] hover:bg-[var(--color-surface-hover)]'
+              : 'border-[var(--color-border)] bg-[var(--color-surface)] hover:border-[var(--color-primary)]/40 hover:bg-[var(--color-surface-hover)] hover:-translate-y-1 hover:shadow-xl'
             }
           `}
         >
@@ -95,16 +95,16 @@ export function DashboardPage() {
         
         {/* Recent Podcasts */}
         <div className="space-y-6">
-          <h2 className="text-[28px] font-bold text-[var(--color-text)] font-heading tracking-tight">Recent Podcasts</h2>
+          <h2 className="text-2xl font-bold text-[var(--color-text)] font-heading tracking-tight">Recent Podcasts</h2>
           <div className="space-y-4">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="card p-5 flex items-center justify-between cursor-pointer group bg-[var(--color-surface)] border-[var(--color-border)]">
-                <div className="flex items-center gap-4 min-w-0">
-                  <div className="w-11 h-11 rounded-lg bg-[var(--color-bg)] border border-[var(--color-border)] flex items-center justify-center shrink-0">
+              <div key={i} className="card p-6 flex items-center justify-between cursor-pointer group bg-[var(--color-surface)] border-[var(--color-border)] hover:border-[var(--color-primary)]/30">
+                <div className="flex items-center gap-5 min-w-0">
+                  <div className="w-12 h-12 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
                     <FileAudio className="w-5 h-5 text-[var(--color-muted)] group-hover:text-[var(--color-primary)] transition-colors" />
                   </div>
                   <div className="min-w-0 pr-4">
-                    <p className="text-[16px] font-bold text-[var(--color-text)] mb-1 truncate">
+                    <p className="text-base font-bold text-[var(--color-text)] mb-1.5 truncate group-hover:text-[var(--color-primary)] transition-colors">
                       {i === 1 ? 'YCombinator Interview with Sam Altman' : i === 2 ? 'Lex Fridman Podcast #400' : 'Latent Space AI Podcast'}
                     </p>
                     <div className="flex items-center gap-4 text-[13px] text-[var(--color-muted)] font-mono">
@@ -113,7 +113,7 @@ export function DashboardPage() {
                     </div>
                   </div>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="w-8 h-8 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1">
                   <ArrowRight className="w-4 h-4 text-[var(--color-primary)]" />
                 </div>
               </div>
@@ -123,54 +123,46 @@ export function DashboardPage() {
 
         {/* How It Works */}
         <div className="space-y-6">
-          <h2 className="text-[28px] font-bold text-[var(--color-text)] font-heading tracking-tight">How It Works</h2>
-          <div className="space-y-6 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-6">
+          <h2 className="text-2xl font-bold text-[var(--color-text)] font-heading tracking-tight">How It Works</h2>
+          <div className="space-y-4">
             
-            <div className="flex gap-4">
-              <div className="w-8 h-8 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] flex items-center justify-center text-[13px] font-extrabold text-[var(--color-primary)] shrink-0 shadow-sm">
+            <div className="card p-5 flex gap-4 items-center">
+              <div className="w-10 h-10 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] flex items-center justify-center text-[14px] font-bold text-[var(--color-primary)] shrink-0 shadow-sm">
                 1
               </div>
-              <div className="space-y-1">
-                <h3 className="text-[16px] font-bold text-[var(--color-text)] flex items-center gap-2">
-                  Upload Audio
-                </h3>
-                <p className="text-[14px] text-[var(--color-text-secondary)]">Provide any podcast audio format up to 500MB.</p>
+              <div className="space-y-0.5">
+                <h3 className="text-[15px] font-bold text-[var(--color-text)]">Upload Audio</h3>
+                <p className="text-[13px] text-[var(--color-text-secondary)]">Provide any podcast audio format up to 500MB.</p>
               </div>
             </div>
             
-            <div className="flex gap-4">
-              <div className="w-8 h-8 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] flex items-center justify-center text-[13px] font-extrabold text-[var(--color-primary)] shrink-0 shadow-sm">
+            <div className="card p-5 flex gap-4 items-center">
+              <div className="w-10 h-10 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] flex items-center justify-center text-[14px] font-bold text-[var(--color-primary)] shrink-0 shadow-sm">
                 2
               </div>
-              <div className="space-y-1">
-                <h3 className="text-[16px] font-bold text-[var(--color-text)] flex items-center gap-2">
-                  AI Transcription
-                </h3>
-                <p className="text-[14px] text-[var(--color-text-secondary)]">High accuracy word-level transcript using OpenAI Whisper.</p>
+              <div className="space-y-0.5">
+                <h3 className="text-[15px] font-bold text-[var(--color-text)]">AI Transcription</h3>
+                <p className="text-[13px] text-[var(--color-text-secondary)]">High accuracy word-level transcript using OpenAI Whisper.</p>
               </div>
             </div>
 
-            <div className="flex gap-4">
-              <div className="w-8 h-8 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] flex items-center justify-center text-[13px] font-extrabold text-[var(--color-primary)] shrink-0 shadow-sm">
+            <div className="card p-5 flex gap-4 items-center">
+              <div className="w-10 h-10 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] flex items-center justify-center text-[14px] font-bold text-[var(--color-primary)] shrink-0 shadow-sm">
                 3
               </div>
-              <div className="space-y-1">
-                <h3 className="text-[16px] font-bold text-[var(--color-text)] flex items-center gap-2">
-                  Semantic Chapters
-                </h3>
-                <p className="text-[14px] text-[var(--color-text-secondary)]">Automatic segmentation and descriptive keyword highlights.</p>
+              <div className="space-y-0.5">
+                <h3 className="text-[15px] font-bold text-[var(--color-text)]">Semantic Chapters</h3>
+                <p className="text-[13px] text-[var(--color-text-secondary)]">Automatic segmentation and descriptive keyword highlights.</p>
               </div>
             </div>
 
-            <div className="flex gap-4">
-              <div className="w-8 h-8 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] flex items-center justify-center text-[13px] font-extrabold text-[var(--color-primary)] shrink-0 shadow-sm">
+            <div className="card p-5 flex gap-4 items-center">
+              <div className="w-10 h-10 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] flex items-center justify-center text-[14px] font-bold text-[var(--color-primary)] shrink-0 shadow-sm">
                 4
               </div>
-              <div className="space-y-1">
-                <h3 className="text-[16px] font-bold text-[var(--color-text)] flex items-center gap-2">
-                  Interactive AI Chat
-                </h3>
-                <p className="text-[14px] text-[var(--color-text-secondary)]">Ask direct questions and export customizable reports.</p>
+              <div className="space-y-0.5">
+                <h3 className="text-[15px] font-bold text-[var(--color-text)]">Interactive AI Chat</h3>
+                <p className="text-[13px] text-[var(--color-text-secondary)]">Ask direct questions and export customizable reports.</p>
               </div>
             </div>
 

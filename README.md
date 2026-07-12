@@ -83,11 +83,11 @@ This platform leverages modern Speech-to-Text models (OpenAI Whisper) and Advanc
 
 | Dashboard View | Transcript View |
 | :---: | :---: |
-| ![Dashboard Mockup](https://raw.githubusercontent.com/Anjal08/Podcast-AI-Intelligence-Platform/main/Architecture/dashboard-preview.png) | ![Transcript Mockup](https://raw.githubusercontent.com/Anjal08/Podcast-AI-Intelligence-Platform/main/Architecture/transcript-preview.png) |
+| ![Dashboard Mockup](https://raw.githubusercontent.com/Anjal08/Podcast-AI-Intelligence-Platform/main/docs/dashboard-preview.png) | ![Transcript Mockup](https://raw.githubusercontent.com/Anjal08/Podcast-AI-Intelligence-Platform/main/docs/transcript-preview.png) |
 
 | Semantic Chapters | AI Chat Assistant |
 | :---: | :---: |
-| ![Chapters Mockup](https://raw.githubusercontent.com/Anjal08/Podcast-AI-Intelligence-Platform/main/Architecture/chapters-preview.png) | ![Chat Mockup](https://raw.githubusercontent.com/Anjal08/Podcast-AI-Intelligence-Platform/main/Architecture/chat-preview.png) |
+| ![Chapters Mockup](https://raw.githubusercontent.com/Anjal08/Podcast-AI-Intelligence-Platform/main/docs/chapters-preview.png) | ![Chat Mockup](https://raw.githubusercontent.com/Anjal08/Podcast-AI-Intelligence-Platform/main/docs/chat-preview.png) |
 
 ---
 

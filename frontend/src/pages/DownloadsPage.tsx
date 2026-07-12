@@ -87,39 +87,42 @@ export function DownloadsPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-8 py-12 w-full space-y-8">
-      <div className="space-y-2">
-        <h1 className="text-[42px] font-extrabold tracking-tight text-[var(--color-text)] font-heading leading-tight">Export Data</h1>
-        <p className="text-[16px] text-[var(--color-text-secondary)]">
-          Download your processed analysis in multiple formats.
+    <div className="max-w-5xl mx-auto px-8 py-12 w-full space-y-10">
+      <div className="space-y-4">
+        <h1 className="text-5xl font-extrabold tracking-tight text-[var(--color-text)] font-heading leading-tight">Export Data</h1>
+        <p className="text-base text-[var(--color-text-secondary)]">
+          Download your processed analysis in multiple formats for integration into your workflow.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {FORMATS.map(({ id, icon: Icon, colorClass, label, desc, size }) => (
           <div
             key={id}
             onClick={() => handleDownload(id)}
-            className="card p-8 cursor-pointer group flex flex-col justify-between min-h-[220px] bg-[var(--color-surface)] border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all"
+            className="card p-8 cursor-pointer group flex flex-col justify-between min-h-[220px] bg-[var(--color-surface)] border-[var(--color-border)] hover:border-[var(--color-primary)]/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl relative overflow-hidden"
           >
-            <div>
-              <div className="flex items-center justify-between mb-6">
+            {/* Background Glow */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[var(--color-primary)]/10 to-transparent blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+            <div className="relative z-10">
+              <div className="flex items-center justify-between mb-8">
                 <div
-                  className={`w-12 h-12 rounded-xl flex items-center justify-center border ${colorClass}`}
+                  className={`w-14 h-14 rounded-2xl flex items-center justify-center border shadow-sm ${colorClass}`}
                 >
-                  <Icon className="w-6 h-6" />
+                  <Icon className="w-7 h-7" />
                 </div>
-                <span className="text-[12px] font-mono font-bold text-[var(--color-muted)] px-3 py-1.5 bg-[var(--color-bg)] rounded-full border border-[var(--color-border)]">
+                <span className="text-[13px] font-mono font-bold text-[var(--color-muted)] px-3 py-1.5 bg-[var(--color-bg)] rounded-md border border-[var(--color-border)] shadow-sm">
                   {size}
                 </span>
               </div>
-              <h3 className="text-[20px] font-bold text-[var(--color-text)] font-heading mb-2">{label}</h3>
-              <p className="text-[14px] text-[var(--color-text-secondary)] leading-relaxed">{desc}</p>
+              <h3 className="text-xl font-bold text-[var(--color-text)] font-heading mb-3">{label}</h3>
+              <p className="text-[15px] text-[var(--color-text-secondary)] leading-relaxed">{desc}</p>
             </div>
 
-            <div className="flex justify-end mt-6">
-              <div className="btn-secondary h-11 px-5 text-[14px] opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
-                <ArrowDown className="w-4 h-4" />
+            <div className="flex justify-end mt-8 relative z-10">
+              <div className="btn-secondary h-11 px-5 text-[14px] bg-[var(--color-bg)] opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 group-hover:border-[var(--color-primary)]/30 group-hover:text-[var(--color-primary)]">
+                <ArrowDown className="w-4 h-4 group-hover:animate-bounce" />
                 Download
               </div>
             </div>

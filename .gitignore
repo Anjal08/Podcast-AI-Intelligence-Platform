@@ -7,6 +7,16 @@ venv/
 env/
 .env
 
+# Node & Frontend
+node_modules/
+dist/
+build/
+.npm/
+
+# Testing & Logs
+.pytest_cache/
+*.log
+
 # Large Models & AI Cache
 *.h5
 *.tflite

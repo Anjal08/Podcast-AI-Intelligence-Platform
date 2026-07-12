@@ -30,11 +30,11 @@ export function Sidebar() {
     const active = location.pathname === to || (to !== '/' && location.pathname.startsWith(to));
     return (
       <NavLink key={to} to={to} className="block relative group outline-none mb-1">
-        {/* Purple Active indicator dot/bar */}
+        {/* Purple Active indicator */}
         {active && (
           <motion.div
             layoutId="active-nav-indicator"
-            className="absolute left-1 top-1/2 -translate-y-1/2 w-[4px] h-[16px] bg-[var(--color-primary)] rounded-r-full z-10"
+            className="absolute left-0 top-1 bottom-1 w-[3px] bg-[var(--color-primary)] rounded-r-full z-10"
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           />
         )}
@@ -42,14 +42,14 @@ export function Sidebar() {
           className={cn(
             'flex items-center gap-[14px] px-4 py-3 mx-3 rounded-lg transition-all duration-200 cursor-pointer text-sm font-medium',
             active 
-              ? 'bg-[var(--color-surface)] text-[var(--color-text)] border border-[var(--color-border)] shadow-sm' 
+              ? 'bg-[#8B5CF6]/10 text-[#8B5CF6] border border-[#8B5CF6]/20' 
               : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] border border-transparent',
             collapsed && 'justify-center mx-2 px-0'
           )}
         >
           <Icon className={cn(
             'w-5 h-5 shrink-0 transition-transform duration-200',
-            active ? 'text-[var(--color-primary)]' : 'text-[var(--color-muted)] group-hover:text-[var(--color-text-secondary)] group-hover:scale-105'
+            active ? 'text-[#8B5CF6]' : 'text-[var(--color-muted)] group-hover:text-[var(--color-text-secondary)] group-hover:scale-105'
           )} />
           <AnimatePresence>
             {!collapsed && (
