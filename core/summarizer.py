@@ -1,11 +1,9 @@
-from transformers import pipeline
+import os
+from groq import Groq
+from dotenv import load_dotenv
 
-# Use text-generation pipeline
-summarizer = pipeline(
-    "text-generation",
-    model="sshleifer/distilbart-cnn-12-6",
-    device=-1  # CPU
-)
+load_dotenv()
+client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
 def summarize_topic(sentences, max_sentences=2):
     # Join sentences into text
@@ -20,19 +18,18 @@ def summarize_topic(sentences, max_sentences=2):
         return text
 
     try:
-        # Truncate if too long for DistilBART
-        input_text = " ".join(text.split()[:400])
+        # Ask Groq to summarize (zero local RAM usage!)
+        prompt = f"Summarize the following text in 2 concise sentences. Do not use conversational filler, just provide the summary:\n\n{text}"
         
-        result = summarizer(
-            input_text,
-            max_length=150,
-            min_length=30,
-            do_sample=False,
-            truncation=True
+        response = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.3,
+            max_tokens=150,
         )
-        # Handle different result keys depending on pipeline
-        summary = result[0].get("summary_text") or result[0].get("generated_text")
-        return summary.strip() if summary else text
+        return response.choices[0].message.content.strip()
     except Exception as e:
         print(f"Summarization error: {e}")
         # Fallback to first few sentences
