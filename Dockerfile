@@ -17,14 +17,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of your application code
 COPY . .
 
-# Create a start script to run both FastAPI and Streamlit
-RUN echo '#!/bin/bash\n\
-uvicorn main:app --host 0.0.0.0 --port 8000 &\n\
-streamlit run app.py --server.port 7860 --server.address 0.0.0.0\n\
-' > start.sh && chmod +x start.sh
-
 # Expose the port Hugging Face expects
 EXPOSE 7860
 
-# Run the start script
-CMD ["./start.sh"]
+# Run FastAPI directly on port 7860
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
